@@ -1,19 +1,27 @@
 # 🍎 AI Food Freshness Detector
 
-An AI-powered computer vision project that detects whether a fruit is **Fresh** or **Rotten** using deep learning.
+An AI-powered **Computer Vision project** that detects whether a fruit is **Fresh** or **Rotten** using deep learning.
 
-The system is built using **PyTorch for model training** and **FastAPI for backend inference**. Users can upload an image of food and receive a prediction about its freshness.
+The system uses a trained **PyTorch model** and provides multiple ways to test predictions:
+
+* Upload an image
+* Use a web interface
+* Use **real-time camera detection**
+
+This project demonstrates a **complete AI workflow**:
+
+Dataset → Model Training → Model Saving → API → Web Interface → Real-Time Detection
 
 ---
 
 # 🚀 Features
 
-* Detects **Fresh vs Rotten fruits**
-* Deep learning image classification
-* REST API built with **FastAPI**
-* Supports image upload for prediction
-* Modular and easy-to-understand project structure
-* Easy to extend for more food categories
+✔ Detects **Fresh vs Rotten fruits**
+✔ Deep learning image classification
+✔ Backend API built with **FastAPI**
+✔ Interactive UI using **Streamlit**
+✔ Real-time webcam detection using **OpenCV**
+✔ Easy-to-understand project structure
 
 ---
 
@@ -23,9 +31,9 @@ The system is built using **PyTorch for model training** and **FastAPI for backe
 * PyTorch
 * Torchvision
 * FastAPI
-* Uvicorn
+* Streamlit
+* OpenCV
 * Pillow
-* Computer Vision
 
 ---
 
@@ -50,7 +58,9 @@ AI-Food-Detector
 │
 ├── train_freshness.py
 ├── detect.py
+├── camera_detect.py
 ├── main.py
+├── app.py
 └── README.md
 ```
 
@@ -58,13 +68,11 @@ AI-Food-Detector
 
 # 📊 Dataset
 
-This project uses a **Fresh and Rotten Fruits image dataset**.
-
-Download dataset from:
+Dataset used for training:
 
 https://www.kaggle.com/datasets/sriramr/fruits-fresh-and-rotten-for-classification
 
-After downloading, organize the dataset like this:
+After downloading the dataset, organize it like this:
 
 ```
 dataset/
@@ -78,7 +86,7 @@ val/
    rotten → 30 images
 ```
 
-Make sure **both classes contain equal number of images** for balanced training.
+Balanced datasets help improve model performance.
 
 ---
 
@@ -105,7 +113,7 @@ Activate environment
 venv\Scripts\activate
 ```
 
-### Mac / Linux
+### Mac/Linux
 
 ```
 source venv/bin/activate
@@ -114,20 +122,20 @@ source venv/bin/activate
 Install dependencies:
 
 ```
-pip install fastapi uvicorn torch torchvision pillow python-multipart
+pip install fastapi uvicorn torch torchvision pillow python-multipart streamlit opencv-python
 ```
 
 ---
 
 # 🏋️ Model Training
 
-Train the deep learning model using:
+Train the deep learning model:
 
 ```
 python train_freshness.py
 ```
 
-After training completes, the model will be saved as:
+After training finishes, the model will be saved as:
 
 ```
 models/freshness_model.pth
@@ -135,25 +143,7 @@ models/freshness_model.pth
 
 ---
 
-# 🔍 Prediction System
-
-The trained model is loaded in `detect.py` and used by the FastAPI backend to classify images.
-
-Example predictions:
-
-```
-Fresh
-```
-
-or
-
-```
-Rotten
-```
-
----
-
-# ▶️ Running the API Server
+# ▶️ Run the API Server
 
 Start the FastAPI server:
 
@@ -161,32 +151,45 @@ Start the FastAPI server:
 uvicorn main:app --reload
 ```
 
-Server will start at:
+API will run at:
 
 ```
 http://127.0.0.1:8000
 ```
 
----
-
-# 📡 API Documentation
-
-FastAPI automatically generates interactive API documentation.
-
-Open in your browser:
+API documentation:
 
 ```
 http://127.0.0.1:8000/docs
 ```
 
-Steps:
+---
 
-1. Click **POST /analyze**
-2. Click **Try it out**
-3. Upload a fruit image
-4. Click **Execute**
+# 💻 Run the Web Interface
 
-The system will return the prediction.
+Start the Streamlit application:
+
+```
+streamlit run app.py
+```
+
+The interface will open in your browser.
+
+Upload an image and the model will predict whether the fruit is **Fresh or Rotten**.
+
+---
+
+# 📷 Real-Time Camera Detection
+
+Run webcam detection:
+
+```
+python camera_detect.py
+```
+
+The webcam will open and display predictions directly on the camera screen.
+
+Press **Q** to exit.
 
 ---
 
@@ -210,18 +213,18 @@ or
 
 # 🔮 Future Improvements
 
-* Detect **multiple food categories**
-* Add **real-time camera detection**
-* Improve dataset size for better accuracy
+* Detect **multiple fruit types**
+* Add **confidence scores**
+* Implement **object detection**
 * Deploy model to **cloud platforms**
-* Build **mobile app interface**
+* Build a **mobile application**
 
 ---
 
 # 👨‍💻 Author
 
-AI Computer Vision project developed for learning **deep learning and food quality detection systems**.
+Developed as a **Computer Vision / AI project** to explore deep learning applications in food quality detection.
 
 ---
 
-⭐ If you like this project, consider **starring the repository on GitHub**.
+⭐ If you found this project useful, consider **starring the repository**.
